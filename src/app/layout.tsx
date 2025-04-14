@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Background from "@/components/Background";
@@ -9,6 +9,13 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false
+};
+
 export const metadata: Metadata = {
   title: {
     default: "SiTerra Studio - Современная веб-разработка",
@@ -16,12 +23,6 @@ export const metadata: Metadata = {
   },
   description: "Создаем современные и инновационные веб-решения для вашего бизнеса",
   metadataBase: new URL('https://siterra-studio.ru'),
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false
-  },
   keywords: ["веб-разработка", "создание сайтов", "интернет-магазины", "веб-приложения", "SiTerra Studio", "разработка сайтов", "веб-дизайн"],
   authors: [{ name: "SiTerra Studio" }],
   creator: "SiTerra Studio",
