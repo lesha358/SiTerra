@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   },
   description: "Создаем современные и инновационные веб-решения для вашего бизнеса",
   metadataBase: new URL('https://siterra-studio.ru'),
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   keywords: ["веб-разработка", "создание сайтов", "интернет-магазины", "веб-приложения", "SiTerra Studio", "разработка сайтов", "веб-дизайн"],
   authors: [{ name: "SiTerra Studio" }],
   creator: "SiTerra Studio",
