@@ -3,15 +3,60 @@
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function MainNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('')
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const navbarHeight = 64 // Высота навигационной панели
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['services', 'portfolio', 'contact']
+      const scrollPosition = window.scrollY + 100
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveLink(section)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
+      const navbarHeight = 64; // Высота навигационной панели
+      const elementPosition = contactSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -20,7 +65,7 @@ export default function MainNavbar() {
       <div className="absolute inset-0 bg-white/80 backdrop-blur-md border-b border-gray-200/50" />
       <div className="container mx-auto px-4 max-w-full">
         <div className="flex items-center justify-between h-16 relative">
-          <Link href="/" className="group">
+          <Link href="/" className="group ml-8">
             <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
               SiTerra
             </span>
@@ -120,44 +165,68 @@ export default function MainNavbar() {
                 >
                   <Link 
                     href="/#services" 
-                    className="block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group"
-                    onClick={() => setIsMenuOpen(false)}
+                    className={`block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group ${
+                      activeLink === 'services' ? 'text-purple-600' : ''
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMenuOpen(false);
+                      scrollToSection('services');
+                    }}
                   >
                     <motion.span
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400 }}
                       className="flex items-center gap-2"
                     >
-                      <span className="w-1 h-1 rounded-full bg-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      Услуги
+                      <span className={`w-1 h-1 rounded-full bg-purple-600 ${
+                        activeLink === 'services' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                      } transition-opacity duration-300`} />
+                      <span className="group-hover:text-purple-600 transition-colors duration-300">Услуги</span>
                     </motion.span>
                   </Link>
                   <Link 
                     href="/#portfolio" 
-                    className="block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group"
-                    onClick={() => setIsMenuOpen(false)}
+                    className={`block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group ${
+                      activeLink === 'portfolio' ? 'text-purple-600' : ''
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMenuOpen(false);
+                      scrollToSection('portfolio');
+                    }}
                   >
                     <motion.span
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400 }}
                       className="flex items-center gap-2"
                     >
-                      <span className="w-1 h-1 rounded-full bg-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      Портфолио
+                      <span className={`w-1 h-1 rounded-full bg-purple-600 ${
+                        activeLink === 'portfolio' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                      } transition-opacity duration-300`} />
+                      <span className="group-hover:text-purple-600 transition-colors duration-300">Портфолио</span>
                     </motion.span>
                   </Link>
                   <Link 
                     href="/#contact" 
-                    className="block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group"
-                    onClick={() => setIsMenuOpen(false)}
+                    className={`block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group ${
+                      activeLink === 'contact' ? 'text-purple-600' : ''
+                    }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMenuOpen(false);
+                      scrollToSection('contact');
+                    }}
                   >
                     <motion.span
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 400 }}
                       className="flex items-center gap-2"
                     >
-                      <span className="w-1 h-1 rounded-full bg-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      Контакты
+                      <span className={`w-1 h-1 rounded-full bg-purple-600 ${
+                        activeLink === 'contact' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                      } transition-opacity duration-300`} />
+                      <span className="group-hover:text-purple-600 transition-colors duration-300">Контакты</span>
                     </motion.span>
                   </Link>
                   <Link 
@@ -171,13 +240,14 @@ export default function MainNavbar() {
                       className="flex items-center gap-2"
                     >
                       <span className="w-1 h-1 rounded-full bg-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      Технологии
+                      <span className="group-hover:text-purple-600 transition-colors duration-300">Технологии</span>
                     </motion.span>
                   </Link>
                   <Link 
                     href="/#contact" 
                     className="block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       setIsMenuOpen(false);
                       scrollToContact();
                     }}
@@ -188,7 +258,7 @@ export default function MainNavbar() {
                       className="flex items-center gap-2"
                     >
                       <span className="w-1 h-1 rounded-full bg-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      Обсудить проект
+                      <span className="group-hover:text-purple-600 transition-colors duration-300">Обсудить проект</span>
                     </motion.span>
                   </Link>
                 </motion.div>

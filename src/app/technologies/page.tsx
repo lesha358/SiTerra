@@ -24,6 +24,7 @@ import {
   Users
 } from 'lucide-react'
 import MainNavbar from '@/components/MainNavbar'
+import FloatingButton from '@/components/FloatingButton'
 
 const techCategories = [
   {
@@ -350,6 +351,8 @@ export default function Technologies() {
           </motion.div>
         </div>
       </section>
+
+      <FloatingButton />
     </main>
   )
 } 

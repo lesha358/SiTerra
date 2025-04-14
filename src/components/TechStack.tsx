@@ -121,7 +121,7 @@ export default function TechStack() {
           <p className="text-gray-600 text-lg mb-6">
             И это далеко не полный список технологий, которые мы используем в работе
           </p>
-          <Link href="/technologies" className="group relative inline-flex items-center justify-center gap-2 py-3 px-8 rounded-xl overflow-hidden">
+          <Link href="/technologies" className="group relative inline-flex items-center justify-center gap-2 py-3 px-8 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-purple-500 to-indigo-500 opacity-90 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 via-purple-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute inset-0 bg-white/10 backdrop-blur-sm group-hover:bg-white/20 transition-all duration-300" />
