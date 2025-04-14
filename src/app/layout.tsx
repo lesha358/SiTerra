@@ -22,9 +22,12 @@ export const metadata: Metadata = {
     template: "%s | SiTerra Studio"
   },
   description: "Создаем современные и инновационные веб-решения для вашего бизнеса",
-  metadataBase: new URL('https://siterra-studio.ru'),
+  metadataBase: new URL('https://siterra.studio'),
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.ico', type: 'image/x-icon' }
+    ],
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
