@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | SiTerra Studio"
   },
   description: "Создаем современные и инновационные веб-решения для вашего бизнеса",
-  metadataBase: new URL('https://si-terra.vercel.app'),
+  metadataBase: new URL('https://siterra-studio.ru'),
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://si-terra.vercel.app',
+    url: 'https://siterra-studio.ru',
     title: 'SiTerra Studio - Современная веб-разработка',
     description: 'Профессиональная студия веб-разработки. Создаем современные, быстрые и эффективные веб-приложения.',
     siteName: 'SiTerra Studio',
