@@ -17,6 +17,15 @@ const nextConfig = {
       },
     ];
   },
+  // Добавляем явные настройки для статических файлов
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/public/favicon.ico',
+      },
+    ];
+  },
 };
 
 export default nextConfig; 
