@@ -79,8 +79,6 @@ export default function RootLayout({
   return (
     <html lang="ru" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </head>
       <body className="overflow-x-hidden">
         <Background />
