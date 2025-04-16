@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-};
+  images: {
+    domains: ['siterra-studio.ru'],
+  }
+}
 
-export default nextConfig; 
+export default nextConfig 
