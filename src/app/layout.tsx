@@ -22,7 +22,13 @@ export const metadata: Metadata = {
     template: "%s | SiTerra Studio"
   },
   description: "Создаем современные и инновационные веб-решения для вашего бизнеса",
-  metadataBase: new URL('https://siterra-studio.ru'),
+  metadataBase: new URL('https://www.siterra-studio.ru'),
+  alternates: {
+    canonical: 'https://www.siterra-studio.ru',
+    types: {
+      'application/rss+xml': 'https://www.siterra-studio.ru/feed.xml',
+    },
+  },
   icons: {
     icon: '/favicon.ico'
   },
