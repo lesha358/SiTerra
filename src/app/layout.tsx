@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={inter.variable}>
       <head>
-        <meta name="yandex-verification" content="11e3c3f1824633b9" />
+        {/* Метатег удален, так как он уже указан в metadata */}
       </head>
       <body className="overflow-x-hidden">
         <Background />
