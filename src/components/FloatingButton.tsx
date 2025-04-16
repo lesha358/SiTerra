@@ -17,7 +17,7 @@ export default function FloatingButton() {
     {
       icon: MessageSquare,
       label: 'Telegram',
-      href: 'https://t.me/siterrastudio',
+      href: 'https://t.me/miya_b',
       color: 'from-blue-600 to-blue-500'
     },
     {
