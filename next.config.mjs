@@ -20,9 +20,9 @@ const nextConfig = {
     return [
       {
         source: '/favicon.ico',
-        destination: '/favicon.ico',
+        destination: 'https://www.siterra-studio.ru/favicon.ico',
         permanent: true,
-      },
+      }
     ]
   }
 }
