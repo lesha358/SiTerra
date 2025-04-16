@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Background from "@/components/Background";
+import { GeistSans } from 'geist/font/sans'
 
 const inter = Inter({ 
   subsets: ["latin", "cyrillic"],
@@ -74,7 +75,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'ваш-google-verification-code',
-    yandex: 'ваш-yandex-verification-code',
+    yandex: '11e3c3f1824633b9',
   },
 };
 
@@ -86,6 +87,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={inter.variable}>
       <head>
+        <meta name="yandex-verification" content="11e3c3f1824633b9" />
       </head>
       <body className="overflow-x-hidden">
         <Background />
