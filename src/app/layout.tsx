@@ -30,7 +30,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/favicon.ico'
+    icon: [
+      { url: '/favicon.ico' },
+      { url: 'https://www.siterra-studio.ru/favicon.ico' },
+      { url: 'https://siterra-studio.ru/favicon.ico' }
+    ]
   },
   keywords: ["веб-разработка", "создание сайтов", "интернет-магазины", "веб-приложения", "SiTerra Studio", "разработка сайтов", "веб-дизайн"],
   authors: [{ name: "SiTerra Studio" }],
