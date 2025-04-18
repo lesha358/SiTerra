@@ -8,18 +8,48 @@ import { useState, useEffect } from 'react'
 export default function MainNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeLink, setActiveLink] = useState('')
+  const [currentPath, setCurrentPath] = useState('')
+
+  useEffect(() => {
+    setCurrentPath(window.location.pathname)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      const navbarHeight = 64 // Высота навигационной панели
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight
+    if (typeof window !== 'undefined') {
+      if (currentPath === '/') {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const navbarHeight = 64
+          const elementPosition = element.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.scrollY - navbarHeight
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        }
+      } else {
+        // Если мы не на главной странице, перенаправляем на главную с якорем
+        // и добавляем обработчик для корректной прокрутки после загрузки
+        const handleLoad = () => {
+          const element = document.getElementById(sectionId)
+          if (element) {
+            const navbarHeight = 64
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.scrollY - navbarHeight
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+            // Удаляем обработчик после использования
+            window.removeEventListener('load', handleLoad)
+          }
+        }
+        
+        window.addEventListener('load', handleLoad)
+        window.location.href = `/#${sectionId}`
+      }
     }
   }
 
@@ -47,16 +77,41 @@ export default function MainNavbar() {
   }, [])
 
   const scrollToContact = () => {
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      const navbarHeight = 64; // Высота навигационной панели
-      const elementPosition = contactSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+    if (typeof window !== 'undefined') {
+      if (currentPath === '/') {
+        const contactSection = document.getElementById('contact')
+        if (contactSection) {
+          const navbarHeight = 64
+          const elementPosition = contactSection.getBoundingClientRect().top
+          const offsetPosition = elementPosition + window.scrollY - navbarHeight
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          })
+        }
+      } else {
+        // Если мы не на главной странице, перенаправляем на главную с якорем контактов
+        // и добавляем обработчик для корректной прокрутки после загрузки
+        const handleLoad = () => {
+          const contactSection = document.getElementById('contact')
+          if (contactSection) {
+            const navbarHeight = 64
+            const elementPosition = contactSection.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.scrollY - navbarHeight
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+            // Удаляем обработчик после использования
+            window.removeEventListener('load', handleLoad)
+          }
+        }
+        
+        window.addEventListener('load', handleLoad)
+        window.location.href = '/#contact'
+      }
     }
   }
 
@@ -247,9 +302,9 @@ export default function MainNavbar() {
                     href="/#contact" 
                     className="block text-gray-700 hover:text-purple-600 transition-colors duration-300 py-2 group"
                     onClick={(e) => {
-                      e.preventDefault();
-                      setIsMenuOpen(false);
-                      scrollToContact();
+                      e.preventDefault()
+                      setIsMenuOpen(false)
+                      scrollToContact()
                     }}
                   >
                     <motion.span
