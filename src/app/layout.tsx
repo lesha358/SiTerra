@@ -28,32 +28,26 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' }
+      { url: '/favicon.ico' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' }
     ],
     apple: [
-      { url: '/icon', type: 'image/png' }
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
     ],
     shortcut: [
       { url: '/favicon.ico' }
     ],
     other: [
       {
-        rel: 'icon',
-        url: '/favicon-16x16.png',
-        sizes: '16x16',
-        type: 'image/png'
+        rel: 'manifest',
+        url: '/site.webmanifest'
       },
       {
-        rel: 'icon',
-        url: '/favicon-32x32.png',
-        sizes: '32x32',
-        type: 'image/png'
-      },
-      {
-        rel: 'icon',
-        url: '/favicon-48x48.png',
-        sizes: '48x48',
-        type: 'image/png'
+        rel: 'mask-icon',
+        url: '/safari-pinned-tab.svg',
+        color: '#5bbad5'
       }
     ]
   },

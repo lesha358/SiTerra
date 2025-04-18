@@ -1,8 +1,10 @@
 User-agent: *
 Allow: /
 Allow: /favicon.ico
-Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
+Allow: /favicon-*.png
+Allow: /apple-touch-icon.png
+Allow: /android-chrome-*.png
+Allow: /site.webmanifest
+Allow: /safari-pinned-tab.svg
 
 Sitemap: https://siterra-studio.ru/sitemap.xml 
