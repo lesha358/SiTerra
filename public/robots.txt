@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
+Allow: /favicon.ico
 Disallow: /api/
 Disallow: /_next/
 Disallow: /static/
 
-Sitemap: https://siterra.studio/sitemap.xml 
+Sitemap: https://siterra-studio.ru/sitemap.xml 

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Background from "@/components/Background";
+import Script from 'next/script';
 
 const inter = Inter({ 
   subsets: ["latin", "cyrillic"],
@@ -27,12 +28,33 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/icon', type: 'image/png' },
       { url: '/favicon.ico' }
     ],
     apple: [
       { url: '/icon', type: 'image/png' }
+    ],
+    shortcut: [
+      { url: '/favicon.ico' }
+    ],
+    other: [
+      {
+        rel: 'icon',
+        url: '/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png'
+      },
+      {
+        rel: 'icon',
+        url: '/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png'
+      },
+      {
+        rel: 'icon',
+        url: '/favicon-48x48.png',
+        sizes: '48x48',
+        type: 'image/png'
+      }
     ]
   },
   keywords: ["веб-разработка", "создание сайтов", "интернет-магазины", "веб-приложения", "SiTerra Studio", "разработка сайтов", "веб-дизайн"],
@@ -54,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    creator: '@siterrastudio',
     title: 'SiTerra Studio - Современная веб-разработка',
     description: 'Профессиональная студия веб-разработки. Создаем современные, быстрые и эффективные веб-приложения.',
-    creator: '@siterrastudio',
   },
   robots: {
     index: true,
@@ -82,10 +104,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru" className={inter.variable}>
-      <head>
-        {/* Метатег удален, так как он уже указан в metadata */}
-      </head>
       <body className="overflow-x-hidden">
+        <Script id="yandex-metrika" strategy="afterInteractive">
+          {`
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            ym(101169998, "init", {
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+              webvisor:true
+            });
+          `}
+        </Script>
+        <noscript>
+          <div>
+            <img src="https://mc.yandex.ru/watch/101169998" style={{ position: 'absolute', left: '-9999px' }} alt="" />
+          </div>
+        </noscript>
         <Background />
         <div className="relative z-10">
           {children}
